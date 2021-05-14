@@ -228,6 +228,7 @@ data_scale = [data[(data['Month'] == mon) &
              for mon in ['Jul', 'Aug', 'Sept']
              for dep in ['1', '3', '5/6']]
 
+
 all_circles = [circlify.circlify(
     circ,
     show_enclosure=False,
