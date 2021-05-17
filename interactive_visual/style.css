@@ -8,6 +8,16 @@ html, body {
 canvas {
   display: block;
 }
+* {
+  box-sizing: border-box;
+}
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding 20px;
+}
 
 button{
   background-color: #4CAF50;
