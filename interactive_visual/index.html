@@ -4,9 +4,8 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <script src="build/build.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
-    <script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+    <script src="build/build.js"></script>
     <div class="row">
        <div class="column" style="background-color:#000;">
          <p id="canvas"></p>
@@ -20,6 +19,11 @@
          <p> You must record audio separately.
 
 	 It is key that you set your browser to auto download as multiple downloads may be necessary for a long video.</p>
+         <button id="save_canvas">save_canvas</button>
+          <script src="gif.js"></script>
+         <script src="recordCanvas.js"></script>
+         <script src="download.js"></script>
+         <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
          <p id="control0"></p>
          <h2> Select the month that you would like to view:</h2>
          <p id="control1"></p>

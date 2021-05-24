@@ -8,11 +8,12 @@ let ob_mon_num:any;
 let focusDept:string = 'all';
 let tittleH = 50;
 let figH = 900;
-let figW = 550;
-let legendW = 250;
+let figW = 900;
+let legendW = 210;
 let top_bias = 50
 let months:any = [];
 let legend:any = [];
+let nextFrame = 0
 
 function setup() {
   createCanvas(figW + legendW, tittleH + figH).parent('canvas');
@@ -23,35 +24,6 @@ function setup() {
   months[1] = new Title(8, 'August');
   months[2] = new Title(9, 'September');
 }
-class LegendLine{
-  name:string
-  colo:any
-  loca:number
-  spaceing = figH / 20
-  size = 40
-  constructor(name:string, colo:any, loca:number){
-    this.name = name
-    this.colo = colo
-    this.loca = loca +2
-  }
-  show(){
-    push()
-    translate(figW, tittleH)
-    var strokeColo = this.colo;
-    var fillColo = this.colo;
-    fillColo.setAlpha(200);
-    fill(fillColo);
-    stroke(strokeColo);
-    strokeWeight(2);
-    circle(20, this.spaceing * this.loca, this.size);
-    fill(255);
-    textAlign(LEFT)
-    textSize(20)
-    strokeWeight(0)
-    text(this.name, 50, this.spaceing * this.loca + 10)
-    pop()
-  }
-}
 function draw() {
   background(0)
   for (var i = 0; i < months.length; i++) {
@@ -60,6 +32,7 @@ function draw() {
   for (var i = 0; i < legend.length; i++) {
     legend[i].show()
   }
+  timeAnimation()
   push()
   translate(0, tittleH)
   for (var i = 0; i < dataCircles.length; i++) {
@@ -84,49 +57,74 @@ function draw() {
   }
   pop()
 }
+
+class LegendLine{
+  name:string
+  colo:any
+  loca:number
+  spaceing = figH / 25
+  size = 20
+  constructor(name:string, colo:any, loca:number){
+    this.name = name
+    this.colo = colo
+    this.loca = figH - this.spaceing * (loca + 2)
+  }
+  show(){
+    push()
+    translate(figW, tittleH)
+    var strokeColo = this.colo;
+    var fillColo = this.colo;
+    fillColo.setAlpha(170);
+    fill(fillColo);
+    stroke(strokeColo);
+    strokeWeight(2);
+    circle(20, this.loca + 5, this.size);
+    fill(255);
+    textAlign(LEFT)
+    textSize(12)
+    strokeWeight(0)
+    text(this.name, 40, this.loca + 10)
+    pop()
+  }
+}
 class Title{
   name: string;
   num:number;
+  alpha:number; y:number;
   x:number;
-  y:number;
-  xTarg:number;
+  alphaTarg:number;
   cent:number;
   left:number;
   right:number;
+  alphaMath:any
   constructor(num:number, name:string){
     this.name = name;
     this.num = num;
     this.y = tittleH;
-
-    this.cent = width/2;
-    this.left = -width * 2;
-    this.right = width * 2;
+    this.x = figW/2;
     this.set_target();
-    this.x = this.xTarg;
+    this.alpha = this.alphaTarg;
+    this.alphaMath = new DeltaMath
   }
   set_target(){
     var n = monthRadio.value();
-    if(this.num < n)
+    if(this.num == n)
     {
-      this.xTarg = this.left;
-    }
-    else if(this.num == n)
-    {
-      this.xTarg = this.cent;
+      this.alphaTarg = 255;
     }
     else
     {
-      this.xTarg = this.right;
+      this.alphaTarg = -100;
     }
   }
   show(){
-    fill(255);
+    fill(255, 255, 255, this.alpha);
     textAlign(CENTER);
     textSize(28);
     strokeWeight(0);
     this.set_target()
     text(this.name, this.x, this.y);
-    this.x = deltaMath(this.x, this.xTarg);
+    this.alpha = this.alphaMath.delta(this.alpha, this.alphaTarg);
   }
 }
 function setZoomAmount(){
@@ -171,7 +169,7 @@ function setSliderValues(){
   zoomRadio.option(1, 'Depth 1     ')
   zoomRadio.option(2, 'Depth 3     ')
   zoomRadio.option(3, 'Depth 5/6     ')
-  zoomRadio.selected('0')
+  zoomRadio.selected('1')
   zoomRadio.attribute('name', 'zoom')
 
   depthCords = {
@@ -197,6 +195,29 @@ function setSliderValues(){
     },
   }
 }
+
+let timeForChange = 23000
+function timeAnimation(){
+    textAlign(LEFT)
+    textSize(12)
+    strokeWeight(0)
+    fill(255)
+    var millisecond = millis();
+    text('Milliseconds \nrunning: \n' + millisecond, 5, 40);
+    var frames = ['7', '8', '9']
+    if(millisecond > 15000){
+        zoomRadio.selected('0')
+    }
+    if(millisecond > timeForChange){
+        timeForChange += 8000
+        if(nextFrame >= 2){
+            nextFrame = 0
+        } else{
+            nextFrame += 1
+        }
+    }
+    monthRadio.selected(frames[nextFrame])
+}
 class DataCirc{
   xCord:any
   yCord:any
@@ -219,6 +240,12 @@ class DataCirc{
   ball:any;
   nameY:any;
   alpha:number = 255;
+  xMath:any
+  yMath:any
+  rMath:any
+  xCordMath:any
+  yCordMath:any
+  zoomMath:any
   constructor(name:string, depth:string, level:number, colo:any, circleArgs:any, showName:any, nameY:any){
     this.name = name;
     this.depth = depth;
@@ -230,6 +257,12 @@ class DataCirc{
     this.y = circleArgs[monthRadio.value()][1]
     this.r = circleArgs[monthRadio.value()][2]
     this.colo = colo;
+    this.xMath = new DeltaMath()
+    this.yMath = new DeltaMath()
+    this.rMath = new DeltaMath()
+    this.xCordMath = new DeltaMath()
+    this.yCordMath = new DeltaMath()
+    this.zoomMath = new DeltaMath()
     this.xCord = depthCords[zoomRadio.value()][this.depth][0]
     this.yCord = depthCords[zoomRadio.value()][this.depth][1]
     if(level == 0){
@@ -270,12 +303,12 @@ class DataCirc{
       pop()
     }
     pop()
-    this.x = deltaMath(this.x, this.circleArgs[monthRadio.value()][0])
-    this.y = deltaMath(this.y, this.circleArgs[monthRadio.value()][1])
-    this.r = deltaMath(this.r, this.circleArgs[monthRadio.value()][2])
-    this.xCord = deltaMath(this.xCord, depthCords[zoomRadio.value()][this.depth][0])
-    this.yCord = deltaMath(this.yCord, depthCords[zoomRadio.value()][this.depth][1])
-    this.zoom = deltaMath(this.zoom, zoomAmount[zoomRadio.value()][monthRadio.value()])
+    this.x = this.xMath.delta(this.x, this.circleArgs[monthRadio.value()][0])
+    this.y = this.yMath.delta(this.y, this.circleArgs[monthRadio.value()][1])
+    this.r = this.rMath.delta(this.r, this.circleArgs[monthRadio.value()][2])
+    this.xCord = this.xCordMath.delta(this.xCord, depthCords[zoomRadio.value()][this.depth][0])
+    this.yCord = this.yCordMath.delta(this.yCord, depthCords[zoomRadio.value()][this.depth][1])
+    this.zoom = this.zoomMath.delta(this.zoom, zoomAmount[zoomRadio.value()][monthRadio.value()])
   }
   showNames(){
     push()
@@ -292,10 +325,40 @@ class DataCirc{
     pop()
   }
 }
-function deltaMath(val:number, tar:number, delta:number=0.05){
-  var change = (tar - val) * delta
-  if(change < delta && change > -delta){
-    return(tar);
-  }
-  return(val + change);
+class DeltaMath{
+   step:number
+   target:number
+   changing:boolean
+   constructor(){
+       this.changing = false
+       this.step = 0
+   }
+   delta(val:number, tar:number, delta=0.05){
+       var dif = tar - val
+       if(this.changing){
+           if((dif / this.step) < 1){
+               this.changing = false
+               return(tar)
+	   }else{
+               return(val + this.step)
+	   }
+
+       } else {
+           if(dif == 0){
+               return(tar)
+	   }else{
+               this.changing = true
+               this.step = (tar - val) * delta
+               return(val + this.step)
+	   }
+       }
+   }
+// function deltaMath(val:number, tar:number, delta:number=0.001, cutoff=0.001){
+//   var change = (tar - val) * delta
+//   var change = (tar - val) * delta
+//   if(change < cutoff && change > -cutoff){
+//     return(tar);
+//   }
+//   return(val + change);
+// }
 }

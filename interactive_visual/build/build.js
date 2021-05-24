@@ -2,24 +2,24 @@ function populate_objects() {
     dataCircles[0] = new DataCirc('all', '1', 0, color(0, 0, 0), { 7.0: [0.0, 0.0, 3.99078584727146], 8.0: [0.0, 0.0, 5.5454611402299765], 9.0: [0.0, 0.0, 6.764460125586023] }, { 7: false, 8: false, 9: false }, {});
     dataCircles[1] = new DataCirc('all', '3', 0, color(0, 0, 0), { 7.0: [0.0, 0.0, 4.756851686319066], 8.0: [0.0, 0.0, 6.1375447818254285], 9.0: [0.0, 0.0, 11.843277627581026] }, { 7: false, 8: false, 9: false }, {});
     dataCircles[2] = new DataCirc('all', '5/6', 0, color(0, 0, 0), { 7.0: [0.0, 0.0, 7.263337320337462], 8.0: [0.0, 0.0, 11.768106648400543], 9.0: [0.0, 0.0, 4.074447828301434] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[3] = new DataCirc('troph', '1', 1, color(255, 255, 51), { 7.0: [-0.7193621605108175, 0.609189761742642, 0.09376588221175149], 8.0: [-0.8616115940002764, 0.6705094686385253, 0.08181154742260853], 9.0: [-1.1812436730884845, 0.5852414989497342, 0.05180437569617458] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[4] = new DataCirc('troph', '3', 1, color(255, 255, 51), { 7.0: [-1.2089686250077571, -0.8593661958805566, 0.15986976703294487], 8.0: [-1.0539236740389297, 0.6509271501855377, 0.07027923052916078], 9.0: [-2.606214207297017, 7.366829360588221, 1.4576200003663253] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[5] = new DataCirc('troph', '5/6', 1, color(255, 255, 51), { 7.0: [-1.7632930743197521, 1.379745215407961, 0.2674511723545317], 8.0: [-3.0814085661622035, -5.158319799494157, 2.0296744384862913], 9.0: [-1.628936329294194, 0.5107153442081055, 0.04115869518765662] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[6] = new DataCirc('alkane', '1', 1, color(255, 127, 0), { 7.0: [0.26092280377110944, 2.221733414498176, 0.2702261877215654], 8.0: [-0.8735228829136109, 0.9429805934932755, 0.15960538311781566], 9.0: [-1.1975498251708174, 0.9889015070191494, 0.14589761667896736] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[7] = new DataCirc('alkane', '3', 1, color(255, 127, 0), { 7.0: [-1.4076859926961678, 2.281836032432599, 0.9680279976578103], 8.0: [-1.072098538936765, 1.042860644186115, 0.1773328678212247], 9.0: [-5.389374025899054, 5.066419334030153, 2.1531783692701945] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[8] = new DataCirc('alkane', '5/6', 1, color(255, 127, 0), { 7.0: [-1.947072101526939, -2.875973284707086, 1.052346776747426], 8.0: [-3.1824607625950243, 5.797182008198925, 2.482161038296616], 9.0: [-1.8904655621009137, -1.5940086824027675, 0.6418673004420187] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[9] = new DataCirc('aceto', '1', 1, color(77, 175, 74), { 7.0: [-0.8109228268130069, -1.65465011741327, 0.6136490487542853], 8.0: [-1.0289373259481878, -2.7764341667426202, 1.195125290337816], 9.0: [-1.3994835834548733, -3.2047222946276945, 1.311138912408643] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[10] = new DataCirc('aceto', '3', 1, color(77, 175, 74), { 7.0: [-1.39347680808886, -2.201484651973239, 0.9102410531926945], 8.0: [-1.247306766907109, 2.937487476894729, 1.209344835621678], 9.0: [-5.324102748008778, -4.833363233164522, 1.9836658128101572] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[11] = new DataCirc('aceto', '5/6', 1, color(77, 175, 74), { 7.0: [-2.1208200106117676, 3.9194581223671157, 1.7944008195049503], 8.0: [0.5586759117018348, 8.295925505738948, 2.0167080065042517], 9.0: [-2.0030047778620874, 1.9671533877953782, 0.9226290432168988] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[12] = new DataCirc('methanotroph', '1', 1, color(228, 26, 28), { 7.0: [-0.8550973976234191, 2.016693549155447, 0.8644730835835891], 8.0: [-1.032074992861393, 2.804814800092749, 1.174632869568897], 9.0: [-1.4130541062485773, 3.314991698727734, 1.389446441066738] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[13] = new DataCirc('methanotroph', '3', 1, color(228, 26, 28), { 7.0: [-1.2157365042547101, 0.9330072080078964, 0.1873938701394046], 8.0: [-1.2370398377338545, -2.8512920116797273, 1.1488705422502947], 9.0: [-2.8397333642719653, -6.73266900938209, 1.143545991085164] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[14] = new DataCirc('methanotroph', '5/6', 1, color(228, 26, 28), { 7.0: [0.3306907320101928, 4.6323886864066655, 0.7586708423041378], 8.0: [-6.39092256041939, 5.276830257412771, 0.7682224856347605], 9.0: [-1.6537585526830179, 0.4216167361163627, 0.05133295166680085] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[15] = new DataCirc('methyl', '1', 1, color(152, 78, 163), { 7.0: [-2.346817084640592, 0.0, 1.643968762630868], 8.0: [-3.197273139642865, 0.0, 2.348188000587111], 9.0: [-3.9683631070509584, 0.0, 2.7960970185350646] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[16] = new DataCirc('methyl', '3', 1, color(152, 78, 163), { 7.0: [-2.963255032400494, 0.0, 1.7935966539185717], 8.0: [-3.58976845436156, 0.0, 2.5477763274638687], 9.0: [-8.201782188726135, 0.0, 3.641495438854892] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[17] = new DataCirc('methyl', '5/6', 1, color(152, 78, 163), { 7.0: [-4.482004080279636, 0.0, 2.7813332400578266], 8.0: [-7.198117680111632, 0.0, 4.569988968288911], 9.0: [-2.8538151611008424, 0.0, 1.2206326672005916] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[18] = new DataCirc('hydro', '1', 1, color(55, 126, 184), { 7.0: [1.643968762630868, 0.0, 2.346817084640592], 8.0: [2.348188000587111, 0.0, 3.197273139642865], 9.0: [2.7960970185350646, 0.0, 3.9683631070509584] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[19] = new DataCirc('hydro', '3', 1, color(55, 126, 184), { 7.0: [1.7935966539185717, 0.0, 2.963255032400494], 8.0: [2.5477763274638687, 0.0, 3.58976845436156], 9.0: [3.641495438854892, 0.0, 8.201782188726135] }, { 7: false, 8: false, 9: false }, {});
-    dataCircles[20] = new DataCirc('hydro', '5/6', 1, color(55, 126, 184), { 7.0: [2.7813332400578266, 0.0, 4.482004080279636], 8.0: [4.569988968288911, 0.0, 7.198117680111632], 9.0: [1.2206326672005916, 0.0, 2.8538151611008424] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[3] = new DataCirc('Anaerobic Methanotroph A', '1', 1, color(255, 255, 51), { 7.0: [-0.7193621605108175, 0.609189761742642, 0.09376588221175149], 8.0: [-0.8616115940002764, 0.6705094686385253, 0.08181154742260853], 9.0: [-1.1812436730884845, 0.5852414989497342, 0.05180437569617458] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[4] = new DataCirc('Anaerobic Methanotroph A', '3', 1, color(255, 255, 51), { 7.0: [-1.2089686250077571, -0.8593661958805566, 0.15986976703294487], 8.0: [-1.0539236740389297, 0.6509271501855377, 0.07027923052916078], 9.0: [-2.606214207297017, 7.366829360588221, 1.4576200003663253] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[5] = new DataCirc('Anaerobic Methanotroph A', '5/6', 1, color(255, 255, 51), { 7.0: [-1.7632930743197521, 1.379745215407961, 0.2674511723545317], 8.0: [-3.0814085661622035, -5.158319799494157, 2.0296744384862913], 9.0: [-1.628936329294194, 0.5107153442081055, 0.04115869518765662] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[6] = new DataCirc('Alkane Oxidizing', '1', 1, color(255, 127, 0), { 7.0: [0.26092280377110944, 2.221733414498176, 0.2702261877215654], 8.0: [-0.8735228829136109, 0.9429805934932755, 0.15960538311781566], 9.0: [-1.1975498251708174, 0.9889015070191494, 0.14589761667896736] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[7] = new DataCirc('Alkane Oxidizing', '3', 1, color(255, 127, 0), { 7.0: [-1.4076859926961678, 2.281836032432599, 0.9680279976578103], 8.0: [-1.072098538936765, 1.042860644186115, 0.1773328678212247], 9.0: [-5.389374025899054, 5.066419334030153, 2.1531783692701945] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[8] = new DataCirc('Alkane Oxidizing', '5/6', 1, color(255, 127, 0), { 7.0: [-1.947072101526939, -2.875973284707086, 1.052346776747426], 8.0: [-3.1824607625950243, 5.797182008198925, 2.482161038296616], 9.0: [-1.8904655621009137, -1.5940086824027675, 0.6418673004420187] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[9] = new DataCirc('Acetoclastic', '1', 1, color(77, 175, 74), { 7.0: [-0.8109228268130069, -1.65465011741327, 0.6136490487542853], 8.0: [-1.0289373259481878, -2.7764341667426202, 1.195125290337816], 9.0: [-1.3994835834548733, -3.2047222946276945, 1.311138912408643] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[10] = new DataCirc('Acetoclastic', '3', 1, color(77, 175, 74), { 7.0: [-1.39347680808886, -2.201484651973239, 0.9102410531926945], 8.0: [-1.247306766907109, 2.937487476894729, 1.209344835621678], 9.0: [-5.324102748008778, -4.833363233164522, 1.9836658128101572] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[11] = new DataCirc('Acetoclastic', '5/6', 1, color(77, 175, 74), { 7.0: [-2.1208200106117676, 3.9194581223671157, 1.7944008195049503], 8.0: [0.5586759117018348, 8.295925505738948, 2.0167080065042517], 9.0: [-2.0030047778620874, 1.9671533877953782, 0.9226290432168988] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[12] = new DataCirc('Aerobic Methanotroph B', '1', 1, color(228, 26, 28), { 7.0: [-0.8550973976234191, 2.016693549155447, 0.8644730835835891], 8.0: [-1.032074992861393, 2.804814800092749, 1.174632869568897], 9.0: [-1.4130541062485773, 3.314991698727734, 1.389446441066738] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[13] = new DataCirc('Aerobic Methanotroph B', '3', 1, color(228, 26, 28), { 7.0: [-1.2157365042547101, 0.9330072080078964, 0.1873938701394046], 8.0: [-1.2370398377338545, -2.8512920116797273, 1.1488705422502947], 9.0: [-2.8397333642719653, -6.73266900938209, 1.143545991085164] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[14] = new DataCirc('Aerobic Methanotroph B', '5/6', 1, color(228, 26, 28), { 7.0: [0.3306907320101928, 4.6323886864066655, 0.7586708423041378], 8.0: [-6.39092256041939, 5.276830257412771, 0.7682224856347605], 9.0: [-1.6537585526830179, 0.4216167361163627, 0.05133295166680085] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[15] = new DataCirc('Methylotrophic', '1', 1, color(152, 78, 163), { 7.0: [-2.346817084640592, 0.0, 1.643968762630868], 8.0: [-3.197273139642865, 0.0, 2.348188000587111], 9.0: [-3.9683631070509584, 0.0, 2.7960970185350646] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[16] = new DataCirc('Methylotrophic', '3', 1, color(152, 78, 163), { 7.0: [-2.963255032400494, 0.0, 1.7935966539185717], 8.0: [-3.58976845436156, 0.0, 2.5477763274638687], 9.0: [-8.201782188726135, 0.0, 3.641495438854892] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[17] = new DataCirc('Methylotrophic', '5/6', 1, color(152, 78, 163), { 7.0: [-4.482004080279636, 0.0, 2.7813332400578266], 8.0: [-7.198117680111632, 0.0, 4.569988968288911], 9.0: [-2.8538151611008424, 0.0, 1.2206326672005916] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[18] = new DataCirc('Hydrogenotrophic', '1', 1, color(55, 126, 184), { 7.0: [1.643968762630868, 0.0, 2.346817084640592], 8.0: [2.348188000587111, 0.0, 3.197273139642865], 9.0: [2.7960970185350646, 0.0, 3.9683631070509584] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[19] = new DataCirc('Hydrogenotrophic', '3', 1, color(55, 126, 184), { 7.0: [1.7935966539185717, 0.0, 2.963255032400494], 8.0: [2.5477763274638687, 0.0, 3.58976845436156], 9.0: [3.641495438854892, 0.0, 8.201782188726135] }, { 7: false, 8: false, 9: false }, {});
+    dataCircles[20] = new DataCirc('Hydrogenotrophic', '5/6', 1, color(55, 126, 184), { 7.0: [2.7813332400578266, 0.0, 4.482004080279636], 8.0: [4.569988968288911, 0.0, 7.198117680111632], 9.0: [1.2206326672005916, 0.0, 2.8538151611008424] }, { 7: false, 8: false, 9: false }, {});
     dataCircles[21] = new DataCirc('Methanomassiliicoccales-OWC_02', '1', 2, color(152, 78, 163), { 7.0: [-3.346102205155471, 0.21514108474140933, 0.042304894026836654], 8.0: [-4.516568940059798, 0.2317241896109964, 0.03255009598078044], 9.0: [-5.536809833777624, -0.4529412601616442, 0.10022462882840098] }, { 7: false, 8: false, 9: false }, {});
     dataCircles[22] = new DataCirc('Methanomassiliicoccales-OWC_02', '3', 2, color(152, 78, 163), { 7.0: [-2.187028209468369, 0.0, 1.0173698309864467], 8.0: [-4.909128367888126, 0.39619546089395463, 0.07987552543096033], 9.0: [-8.46565772469294, 2.162502876932815, 1.4629525792295708] }, { 7: true, 8: false, 9: false }, { 7: -1.0 });
     dataCircles[23] = new DataCirc('Methanomassiliicoccales-OWC_02', '5/6', 2, color(152, 78, 163), { 7.0: [-5.483825438717258, 1.6131475060768563, 0.790700916177765], 8.0: [-5.267310263574365, -0.4905650962431096, 2.5778365159381065], 9.0: [-3.602797146388637, 0.0, 0.4716506819127974] }, { 7: false, 8: true, 9: false }, { 8: -0.4905650962431096 });
@@ -92,12 +92,12 @@ function populate_objects() {
     dataCircles[90] = new DataCirc('Methanomethyliaceae', '1', 2, color(152, 78, 163), { 7.0: [-2.011940331616167, 0.0, 1.3090920096064431], 8.0: [-2.673808154827759, 0.0, 1.8247230157720051], 9.0: [-3.3274006107135983, 0.0, 2.1551345221977045] }, { 7: true, 8: true, 9: true }, { 7: 1.3000000000000007, 8: 1.5000000000000009, 9: 1.3000000000000007 });
     dataCircles[91] = new DataCirc('Methanomethyliaceae', '3', 2, color(152, 78, 163), { 7.0: [-3.2709412438440846, 1.0546174213090342, 0.4949414370460588], 8.0: [-2.9555072547924275, 0.0, 1.9135151278947362], 9.0: [-10.077930833001181, -0.5446085289419346, 1.6879007559149042] }, { 7: false, 8: true, 9: false }, { 8: 1.3000000000000007 });
     dataCircles[92] = new DataCirc('Methanomethyliaceae', '5/6', 2, color(152, 78, 163), { 7.0: [-3.4813671916235753, 0.0, 1.7806963514017657], 8.0: [-9.78356237811086, -0.4905650962431096, 1.9384155985983886], 9.0: [-3.201015713962048, 0.667590680674234, 0.3075191560338773] }, { 7: true, 8: false, 9: false }, { 7: 1.1000000000000005 });
-    legend[0] = new LegendLine('aceto', color(77, 175, 74), 0);
-    legend[1] = new LegendLine('alkane', color(255, 127, 0), 1);
-    legend[2] = new LegendLine('hydro', color(55, 126, 184), 2);
-    legend[3] = new LegendLine('methanotroph', color(228, 26, 28), 3);
-    legend[4] = new LegendLine('methyl', color(152, 78, 163), 4);
-    legend[5] = new LegendLine('troph', color(255, 255, 51), 5);
+    legend[0] = new LegendLine('Acetoclastic', color(77, 175, 74), 0);
+    legend[1] = new LegendLine('Aerobic Methanotroph B', color(228, 26, 28), 1);
+    legend[2] = new LegendLine('Alkane Oxidizing', color(255, 127, 0), 2);
+    legend[3] = new LegendLine('Anaerobic Methanotroph A', color(255, 255, 51), 3);
+    legend[4] = new LegendLine('Hydrogenotrophic', color(55, 126, 184), 4);
+    legend[5] = new LegendLine('Methylotrophic', color(152, 78, 163), 5);
 }
 var depthCords;
 var zoomAmount;
@@ -109,11 +109,12 @@ var ob_mon_num;
 var focusDept = 'all';
 var tittleH = 50;
 var figH = 900;
-var figW = 550;
-var legendW = 250;
+var figW = 900;
+var legendW = 210;
 var top_bias = 50;
 var months = [];
 var legend = [];
+var nextFrame = 0;
 function setup() {
     createCanvas(figW + legendW, tittleH + figH).parent('canvas');
     setSliderValues();
@@ -123,33 +124,6 @@ function setup() {
     months[1] = new Title(8, 'August');
     months[2] = new Title(9, 'September');
 }
-var LegendLine = (function () {
-    function LegendLine(name, colo, loca) {
-        this.spaceing = figH / 20;
-        this.size = 40;
-        this.name = name;
-        this.colo = colo;
-        this.loca = loca + 2;
-    }
-    LegendLine.prototype.show = function () {
-        push();
-        translate(figW, tittleH);
-        var strokeColo = this.colo;
-        var fillColo = this.colo;
-        fillColo.setAlpha(200);
-        fill(fillColo);
-        stroke(strokeColo);
-        strokeWeight(2);
-        circle(20, this.spaceing * this.loca, this.size);
-        fill(255);
-        textAlign(LEFT);
-        textSize(20);
-        strokeWeight(0);
-        text(this.name, 50, this.spaceing * this.loca + 10);
-        pop();
-    };
-    return LegendLine;
-}());
 function draw() {
     background(0);
     for (var i = 0; i < months.length; i++) {
@@ -158,6 +132,7 @@ function draw() {
     for (var i = 0; i < legend.length; i++) {
         legend[i].show();
     }
+    timeAnimation();
     push();
     translate(0, tittleH);
     for (var i = 0; i < dataCircles.length; i++) {
@@ -182,37 +157,60 @@ function draw() {
     }
     pop();
 }
+var LegendLine = (function () {
+    function LegendLine(name, colo, loca) {
+        this.spaceing = figH / 25;
+        this.size = 20;
+        this.name = name;
+        this.colo = colo;
+        this.loca = figH - this.spaceing * (loca + 2);
+    }
+    LegendLine.prototype.show = function () {
+        push();
+        translate(figW, tittleH);
+        var strokeColo = this.colo;
+        var fillColo = this.colo;
+        fillColo.setAlpha(170);
+        fill(fillColo);
+        stroke(strokeColo);
+        strokeWeight(2);
+        circle(20, this.loca + 5, this.size);
+        fill(255);
+        textAlign(LEFT);
+        textSize(12);
+        strokeWeight(0);
+        text(this.name, 40, this.loca + 10);
+        pop();
+    };
+    return LegendLine;
+}());
 var Title = (function () {
     function Title(num, name) {
         this.name = name;
         this.num = num;
         this.y = tittleH;
-        this.cent = width / 2;
-        this.left = -width * 2;
-        this.right = width * 2;
+        this.x = figW / 2;
         this.set_target();
-        this.x = this.xTarg;
+        this.alpha = this.alphaTarg;
+        this.alphaMath = new DeltaMath;
     }
     Title.prototype.set_target = function () {
         var n = monthRadio.value();
-        if (this.num < n) {
-            this.xTarg = this.left;
-        }
-        else if (this.num == n) {
-            this.xTarg = this.cent;
+        if (this.num == n) {
+            this.alphaTarg = 255;
         }
         else {
-            this.xTarg = this.right;
+            this.alphaTarg = -100;
         }
     };
     Title.prototype.show = function () {
-        fill(255);
+        fill(255, 255, 255, this.alpha);
         textAlign(CENTER);
         textSize(28);
         strokeWeight(0);
         this.set_target();
         text(this.name, this.x, this.y);
-        this.x = deltaMath(this.x, this.xTarg);
+        this.alpha = this.alphaMath.delta(this.alpha, this.alphaTarg);
     };
     return Title;
 }());
@@ -253,7 +251,7 @@ function setSliderValues() {
     zoomRadio.option(1, 'Depth 1     ');
     zoomRadio.option(2, 'Depth 3     ');
     zoomRadio.option(3, 'Depth 5/6     ');
-    zoomRadio.selected('0');
+    zoomRadio.selected('1');
     zoomRadio.attribute('name', 'zoom');
     depthCords = {
         0: {
@@ -278,6 +276,29 @@ function setSliderValues() {
         },
     };
 }
+var timeForChange = 23000;
+function timeAnimation() {
+    textAlign(LEFT);
+    textSize(12);
+    strokeWeight(0);
+    fill(255);
+    var millisecond = millis();
+    text('Milliseconds \nrunning: \n' + millisecond, 5, 40);
+    var frames = ['7', '8', '9'];
+    if (millisecond > 15000) {
+        zoomRadio.selected('0');
+    }
+    if (millisecond > timeForChange) {
+        timeForChange += 8000;
+        if (nextFrame >= 2) {
+            nextFrame = 0;
+        }
+        else {
+            nextFrame += 1;
+        }
+    }
+    monthRadio.selected(frames[nextFrame]);
+}
 var DataCirc = (function () {
     function DataCirc(name, depth, level, colo, circleArgs, showName, nameY) {
         this.flareAmount = ceil(50);
@@ -298,6 +319,12 @@ var DataCirc = (function () {
         this.y = circleArgs[monthRadio.value()][1];
         this.r = circleArgs[monthRadio.value()][2];
         this.colo = colo;
+        this.xMath = new DeltaMath();
+        this.yMath = new DeltaMath();
+        this.rMath = new DeltaMath();
+        this.xCordMath = new DeltaMath();
+        this.yCordMath = new DeltaMath();
+        this.zoomMath = new DeltaMath();
         this.xCord = depthCords[zoomRadio.value()][this.depth][0];
         this.yCord = depthCords[zoomRadio.value()][this.depth][1];
         if (level == 0) {
@@ -340,12 +367,12 @@ var DataCirc = (function () {
             pop();
         }
         pop();
-        this.x = deltaMath(this.x, this.circleArgs[monthRadio.value()][0]);
-        this.y = deltaMath(this.y, this.circleArgs[monthRadio.value()][1]);
-        this.r = deltaMath(this.r, this.circleArgs[monthRadio.value()][2]);
-        this.xCord = deltaMath(this.xCord, depthCords[zoomRadio.value()][this.depth][0]);
-        this.yCord = deltaMath(this.yCord, depthCords[zoomRadio.value()][this.depth][1]);
-        this.zoom = deltaMath(this.zoom, zoomAmount[zoomRadio.value()][monthRadio.value()]);
+        this.x = this.xMath.delta(this.x, this.circleArgs[monthRadio.value()][0]);
+        this.y = this.yMath.delta(this.y, this.circleArgs[monthRadio.value()][1]);
+        this.r = this.rMath.delta(this.r, this.circleArgs[monthRadio.value()][2]);
+        this.xCord = this.xCordMath.delta(this.xCord, depthCords[zoomRadio.value()][this.depth][0]);
+        this.yCord = this.yCordMath.delta(this.yCord, depthCords[zoomRadio.value()][this.depth][1]);
+        this.zoom = this.zoomMath.delta(this.zoom, zoomAmount[zoomRadio.value()][monthRadio.value()]);
     };
     DataCirc.prototype.showNames = function () {
         push();
@@ -363,12 +390,34 @@ var DataCirc = (function () {
     };
     return DataCirc;
 }());
-function deltaMath(val, tar, delta) {
-    if (delta === void 0) { delta = 0.05; }
-    var change = (tar - val) * delta;
-    if (change < delta && change > -delta) {
-        return (tar);
+var DeltaMath = (function () {
+    function DeltaMath() {
+        this.changing = false;
+        this.step = 0;
     }
-    return (val + change);
-}
+    DeltaMath.prototype.delta = function (val, tar, delta) {
+        if (delta === void 0) { delta = 0.05; }
+        var dif = tar - val;
+        if (this.changing) {
+            if ((dif / this.step) < 1) {
+                this.changing = false;
+                return (tar);
+            }
+            else {
+                return (val + this.step);
+            }
+        }
+        else {
+            if (dif == 0) {
+                return (tar);
+            }
+            else {
+                this.changing = true;
+                this.step = (tar - val) * delta;
+                return (val + this.step);
+            }
+        }
+    };
+    return DeltaMath;
+}());
 //# sourceMappingURL=../sketch/sketch/build.js.map

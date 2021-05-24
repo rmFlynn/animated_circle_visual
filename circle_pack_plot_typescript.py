@@ -376,6 +376,17 @@ def uncollide_labes(circle_data:pd.DataFrame):
 #############
 # main code #
 #############
+def rename_temerary_not_in_final(data):
+    new_metab_name = {
+        "aceto": "Acetoclastic",
+        "hydro": "Hydrogenotrophic",
+        "methyl": "Methylotrophic",
+        "alkane": "Alkane Oxidizing",
+        "troph": "Anaerobic Methanotroph A",
+        "methanotroph": "Aerobic Methanotroph B",
+    }
+    data["metab"].replace(new_metab_name, inplace=True)
+    return data
 
 def make_static_fig(check_values=False) -> None:
     """Make a MatPlotLib form of the figure"""
@@ -392,15 +403,17 @@ def make_static_fig(check_values=False) -> None:
                              for i in (0, 2, 4)))
     data = read_reshape_data([
         './data/all_mgens_mean_geTMM_w_metab_Rory_7April2021.tsv',
-        './data/geTMM_ALLMUDS_14Feb2021_MEAN_BIN_counts_ge20_genes_transcribed_'
-        'METHANOTROPHS (1).txt'
+        './data/'
+          'geTMM_ALLMUDS_14Feb2021_MEAN_BIN_counts_ge20_genes_transcribed_'
+          'METHANOTROPHS (1).txt'
     ], custom_color)
+    data = rename_temerary_not_in_final(data)
     data['measure'] = np.log(data['measure'] + 1)
     # move one circle
     circle_loc = CircleLoca(data)
-    temp = circle_loc.loc[3]['methanotroph']
-    circle_loc.move_metab(3, 'methanotroph', circle_loc.loc[3]['aceto'])
-    circle_loc.move_metab(3, 'aceto', temp)
+    temp = circle_loc.loc[3]['Aerobic Methanotroph B']
+    circle_loc.move_metab(3, 'Aerobic Methanotroph B', circle_loc.loc[3]['Acetoclastic'])
+    circle_loc.move_metab(3, 'Acetoclastic', temp)
     all_circles = circle_loc.set_circles()
     circle_data = get_circle_data(all_circles, data)
     circle_data = uncollide_labes(circle_data)
@@ -422,18 +435,20 @@ def make_dynamic_fig() -> None:
         "5,         troph,  #ffff33\n"), skipinitialspace=True)
     custom_color['color'] = custom_color['color'].\
         apply(lambda x:tuple(int(x.lstrip('#')[i:i+2], 16) / 255
-                             for i in (0, 2, 4)))
+                                 for i in (0, 2, 4)))
     data = read_reshape_data([
         './data/all_mgens_mean_geTMM_w_metab_Rory_7April2021.tsv',
         './data/geTMM_ALLMUDS_14Feb2021_MEAN_BIN_counts_ge20_genes_'
         'transcribed_METHANOTROPHS (1).txt'
     ], custom_color)
+    data = rename_temerary_not_in_final(data)
+
     data['measure'] = np.log(data['measure'] + 1)
     # move one circle
     circle_loc = CircleLoca(data)
-    x = circle_loc.loc[3]['methanotroph']
-    circle_loc.move_metab(3, 'methanotroph', circle_loc.loc[3]['aceto'])
-    circle_loc.move_metab(3, 'aceto', x)
+    x = circle_loc.loc[3]['Aerobic Methanotroph B']
+    circle_loc.move_metab(3, 'Aerobic Methanotroph B', circle_loc.loc[3]['Acetoclastic'])
+    circle_loc.move_metab(3, 'Acetoclastic', x)
     all_circles = circle_loc.set_circles()
     circle_data = get_circle_data(all_circles, data)
     circle_data = uncollide_labes(circle_data)
@@ -447,6 +462,7 @@ def test_a_line(mon, dep):
         './data/geTMM_ALLMUDS_14Feb2021_MEAN_BIN_counts_ge20_genes_'
         'transcribed_METHANOTROPHS (1).txt'
     ])
+    data = rename_temerary_not_in_final(data)
     return data[
         (data['Month_num'] == mon) &
         (data['Depth'] == dep)
@@ -459,13 +475,14 @@ def test_a_line(mon, dep):
     # "4,        methyl,  #984ea3\n" #purple
     # "5,         troph,  #ffff33\n"
 
-test_a_line(7, '1')
+
 
 def make_test_fig() -> None:
     """Make a MatPlotLib form of the figure"""
     data = read_reshape_data([
         './data/test.tsv',
     ])
+    data = rename_temerary_not_in_final(data)
     data['measure'] = np.log(data['measure'] + 1)
 
     circle_loc = CircleLoca(data)
@@ -473,14 +490,13 @@ def make_test_fig() -> None:
     circle_data = get_circle_data(all_circles, data)
     circle_data = uncollide_labes(circle_data)
 
+
     plt.style.use('dark_background')
     fig, axs = make_fig(circle_data)
     fig.savefig('log_circles.svg')
     fig.show()
 
-make_test_fig()
-data
 if __name__ ==  '__main__':
-make_static_fig()
+    make_static_fig()
     make_dynamic_fig()
 
