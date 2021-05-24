@@ -1,7 +1,6 @@
 let depthCords:any
 let zoomAmount:any
 let dataCircles:any = []
-let monthRadio:any;
 let zoomRadio:any;
 let ob_mon_string:any;
 let ob_mon_num:any;
@@ -13,7 +12,7 @@ let legendW = 210;
 let top_bias = 50
 let months:any = [];
 let legend:any = [];
-let nextFrame = 0
+let monthValue = 7
 
 function setup() {
   createCanvas(figW + legendW, tittleH + figH).parent('canvas');
@@ -107,7 +106,7 @@ class Title{
     this.alphaMath = new DeltaMath
   }
   set_target(){
-    var n = monthRadio.value();
+    var n = monthValue;
     if(this.num == n)
     {
       this.alphaTarg = 255;
@@ -130,9 +129,9 @@ class Title{
 function setZoomAmount(){
   zoomAmount = {
     0: {
-      7: 15,
-      8: 15,
-      9: 15,
+      7: 13,
+      8: 13,
+      9: 13,
     },
     1: {},
     2: {},
@@ -144,7 +143,7 @@ function setZoomAmount(){
     if(dataCircles[i].level == 0){
       d = depthMap[dataCircles[i].depth]
       for (let key in dataCircles[i].circleArgs) {
-          zoomAmount[d][key] = (figW - 70)/ (dataCircles[i].circleArgs[key][2] * 2 )
+          zoomAmount[d][key] = (figW - 200)/ (dataCircles[i].circleArgs[key][2] * 2 )
       }
     }
   }
@@ -156,12 +155,12 @@ function setZoomAmount(){
 
 function setSliderValues(){
 
-  monthRadio = createRadio().parent('control1')
-  monthRadio.option(7, 'July      ')
-  monthRadio.option(8, 'August      ')
-  monthRadio.option(9, 'September     ')
-  monthRadio.selected('7')
-  monthRadio.attribute('name', 'month')
+  // monthRadio = createRadio().parent('control1')
+  // monthRadio.option(7, 'July      ')
+  // monthRadio.option(8, 'August      ')
+  // monthRadio.option(9, 'September     ')
+  // monthRadio.selected('7')
+  // monthRadio.attribute('name', 'month')
 
   // zoomSlider = createSlider(0, 3, 1, 1).parent('control2');
   zoomRadio = createRadio().parent('control2')
@@ -198,26 +197,20 @@ function setSliderValues(){
 
 let timeForChange = 23000
 function timeAnimation(){
-    textAlign(LEFT)
-    textSize(12)
-    strokeWeight(0)
-    fill(255)
     var millisecond = millis();
-    text('Milliseconds \nrunning: \n' + millisecond, 5, 40);
-    var frames = ['7', '8', '9']
     if(millisecond > 15000){
         zoomRadio.selected('0')
     }
     if(millisecond > timeForChange){
         timeForChange += 8000
-        if(nextFrame >= 2){
-            nextFrame = 0
+        if(monthValue >= 9){
+            monthValue = 7
         } else{
-            nextFrame += 1
+            monthValue += 1
         }
     }
-    monthRadio.selected(frames[nextFrame])
 }
+
 class DataCirc{
   xCord:any
   yCord:any
@@ -253,9 +246,9 @@ class DataCirc{
     this.showName = showName
     this.level = level
     this.circleArgs = circleArgs
-    this.x = circleArgs[monthRadio.value()][0]
-    this.y = circleArgs[monthRadio.value()][1]
-    this.r = circleArgs[monthRadio.value()][2]
+    this.x = circleArgs[monthValue][0]
+    this.y = circleArgs[monthValue][1]
+    this.r = circleArgs[monthValue][2]
     this.colo = colo;
     this.xMath = new DeltaMath()
     this.yMath = new DeltaMath()
@@ -274,7 +267,7 @@ class DataCirc{
     }
   }
   set_zoom(){
-    this.zoom = zoomAmount[zoomRadio.value()][monthRadio.value()]
+    this.zoom = zoomAmount[zoomRadio.value()][monthValue]
   }
   show(){
     push()
@@ -299,27 +292,28 @@ class DataCirc{
       textSize(21)
       translate(( z * (this.x - this.r)) - 10, this.y)
       rotate(radians(270))
+      textAlign(CENTER)
       text("Depth: " + this.depth, 0,0)
       pop()
     }
     pop()
-    this.x = this.xMath.delta(this.x, this.circleArgs[monthRadio.value()][0])
-    this.y = this.yMath.delta(this.y, this.circleArgs[monthRadio.value()][1])
-    this.r = this.rMath.delta(this.r, this.circleArgs[monthRadio.value()][2])
+    this.x = this.xMath.delta(this.x, this.circleArgs[monthValue][0])
+    this.y = this.yMath.delta(this.y, this.circleArgs[monthValue][1])
+    this.r = this.rMath.delta(this.r, this.circleArgs[monthValue][2])
     this.xCord = this.xCordMath.delta(this.xCord, depthCords[zoomRadio.value()][this.depth][0])
     this.yCord = this.yCordMath.delta(this.yCord, depthCords[zoomRadio.value()][this.depth][1])
-    this.zoom = this.zoomMath.delta(this.zoom, zoomAmount[zoomRadio.value()][monthRadio.value()])
+    this.zoom = this.zoomMath.delta(this.zoom, zoomAmount[zoomRadio.value()][monthValue])
   }
   showNames(){
     push()
     translate(this.xCord, this.yCord)
     var z = this.zoom
-    if(this.showName[monthRadio.value()]){
+    if(this.showName[monthValue]){
       fill(255);
       textAlign(LEFT)
       textSize(12)
       strokeWeight(0)
-      var y = (this.y * z) + ((this.nameY[monthRadio.value()] - this.y) * 14)
+      var y = (this.y * z) + ((this.nameY[monthValue] - this.y) * 14)
       text(this.name, this.x * z, y)
     }
     pop()
