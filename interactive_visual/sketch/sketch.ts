@@ -32,7 +32,6 @@ function draw() {
   for (var i = 0; i < legend.length; i++) {
     legend[i].show()
   }
-  timeAnimation()
   push()
   translate(0, tittleH)
   for (var i = 0; i < dataCircles.length; i++) {
@@ -144,7 +143,7 @@ function setZoomAmount(){
     if(dataCircles[i].level == 0){
       d = depthMap[dataCircles[i].depth]
       for (let key in dataCircles[i].circleArgs) {
-          zoomAmount[d][key] = (figW - 70)/ (dataCircles[i].circleArgs[key][2] * 2 )
+          zoomAmount[d][key] = (figW - 200)/ (dataCircles[i].circleArgs[key][2] * 2 )
       }
     }
   }
@@ -196,28 +195,6 @@ function setSliderValues(){
   }
 }
 
-let timeForChange = 23000
-function timeAnimation(){
-    textAlign(LEFT)
-    textSize(12)
-    strokeWeight(0)
-    fill(255)
-    var millisecond = millis();
-    text('Milliseconds \nrunning: \n' + millisecond, 5, 40);
-    var frames = ['7', '8', '9']
-    if(millisecond > 15000){
-        zoomRadio.selected('0')
-    }
-    if(millisecond > timeForChange){
-        timeForChange += 8000
-        if(nextFrame >= 2){
-            nextFrame = 0
-        } else{
-            nextFrame += 1
-        }
-    }
-    monthRadio.selected(frames[nextFrame])
-}
 class DataCirc{
   xCord:any
   yCord:any

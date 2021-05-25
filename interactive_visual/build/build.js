@@ -132,7 +132,6 @@ function draw() {
     for (var i = 0; i < legend.length; i++) {
         legend[i].show();
     }
-    timeAnimation();
     push();
     translate(0, tittleH);
     for (var i = 0; i < dataCircles.length; i++) {
@@ -231,7 +230,7 @@ function setZoomAmount() {
         if (dataCircles[i].level == 0) {
             d = depthMap[dataCircles[i].depth];
             for (var key_1 in dataCircles[i].circleArgs) {
-                zoomAmount[d][key_1] = (figW - 70) / (dataCircles[i].circleArgs[key_1][2] * 2);
+                zoomAmount[d][key_1] = (figW - 200) / (dataCircles[i].circleArgs[key_1][2] * 2);
             }
         }
     }
@@ -275,29 +274,6 @@ function setSliderValues() {
             '5/6': [figW / 2, (figH / 2)]
         },
     };
-}
-var timeForChange = 23000;
-function timeAnimation() {
-    textAlign(LEFT);
-    textSize(12);
-    strokeWeight(0);
-    fill(255);
-    var millisecond = millis();
-    text('Milliseconds \nrunning: \n' + millisecond, 5, 40);
-    var frames = ['7', '8', '9'];
-    if (millisecond > 15000) {
-        zoomRadio.selected('0');
-    }
-    if (millisecond > timeForChange) {
-        timeForChange += 8000;
-        if (nextFrame >= 2) {
-            nextFrame = 0;
-        }
-        else {
-            nextFrame += 1;
-        }
-    }
-    monthRadio.selected(frames[nextFrame]);
 }
 var DataCirc = (function () {
     function DataCirc(name, depth, level, colo, circleArgs, showName, nameY) {
